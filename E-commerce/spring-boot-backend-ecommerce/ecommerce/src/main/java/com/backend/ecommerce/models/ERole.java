@@ -1,0 +1,5 @@
+package com.backend.ecommerce.models;
+
+public enum ERole {
+	ROLE_USER, ROLE_ADMIN
+}
