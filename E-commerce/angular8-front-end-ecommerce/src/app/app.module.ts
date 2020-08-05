@@ -3,6 +3,7 @@ import { NgModule, LOCALE_ID } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
+import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -20,6 +21,7 @@ import localeFr from '@angular/common/locales/fr';
 import { registerLocaleData } from '@angular/common';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { from } from 'rxjs';
+import { CartStatusComponent } from './components/cart-status/cart-status.component';
 registerLocaleData(localeFr);
 
 const routes : Routes=[
@@ -45,12 +47,14 @@ const routes : Routes=[
     BoardAdminComponent,
     NotFoundComponent,
     CategorieComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    CartStatusComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    NgbModule,
     RouterModule.forRoot(routes)
   ],
   providers: [

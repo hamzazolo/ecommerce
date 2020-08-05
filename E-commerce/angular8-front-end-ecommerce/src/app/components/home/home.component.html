@@ -4,8 +4,36 @@
   </div>
   <div class="col-lg-9">
     <div class="row">
-
-      <div class="col-lg-4 col-md-6 mb-4" *ngFor="let product of products">
+      <div class="col-md-4 col-sm-6" *ngFor="let product of products">
+        <div class="product-grid7">
+            <div class="product-image7">
+                <a routerLink="/product/{{product.id}}">
+                    <img class="pic-1" [src]="product.imageURL">
+                    <img class="pic-2" [src]="product.imageURL2">
+                </a>
+                <ul class="social">
+                    <li><a href="" class="fa fa-search"></a></li>
+                    <li><a href="" class="fa fa-shopping-bag"></a></li>
+                    <li><a href="" class="fa fa-shopping-cart"></a></li>
+                </ul>
+                <span class="product-new-label">New</span>
+            </div>
+            <div class="product-content">
+                <h3 class="title"><a routerLink="/product/{{product.id}}">{{product.name}}</a></h3>
+                <ul class="rating">
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                </ul>
+                <div class="price">{{product.price |  currency:'DH' : 'symbol': '0.2-2' :'fr'}}
+                    <span>{{product.price |  currency:'DH' : 'symbol': '0.2-2' :'fr'}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+      <!-- <div class="col-lg-4 col-md-6 mb-4" *ngFor="let product of products">
         <div class="card h-100">
           <a routerLink="/product/{{product.id}}"><img class="card-img-top" [src]="product.imageURL"></a>
           <div class="card-body">
@@ -23,12 +51,41 @@
             </button>
           </div>
         </div>
+      </div> -->
+ 
+      <div class="col-md-12 alert alert-warning text-center" *ngIf="products?.length <= 0">
+        Aucun produit
       </div>
-
 
     </div>
   </div>
 </div>
 <div>
-  I will add pagination here 
+  <div *ngIf="products?.length > 0">
+    <div class="row">
+      <!--handel page size -->
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-3">
+            <span>Page size : </span>
+          </div>
+
+          <div class="col-md-9">
+            <select (change)="updatePageSize($event.target.value)" class="form-control-sm">
+              <option>5</option>
+              <option>10</option>
+              <option>20</option>
+              <option>50</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <!-- handel pagination -->
+      <div class="col-md-6">
+        <ngb-pagination  [(page)]="currentPage" [pageSize]="pageSize" 
+          [collectionSize]="totalRecords" (pageChange)="listProduct()" [boundaryLinks]="true" class="d-flex justify-content-end bg-color"></ngb-pagination>
+        
+      </div>
+    </div>
+  </div>
 </div>

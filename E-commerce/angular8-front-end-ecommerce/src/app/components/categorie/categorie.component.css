@@ -1,3 +1,10 @@
+a{
+    color: #78e08f;
+}
 a:hover{
     text-decoration: none;
+}
+
+.bg-color{
+    background-color: #78e08f;
 }
