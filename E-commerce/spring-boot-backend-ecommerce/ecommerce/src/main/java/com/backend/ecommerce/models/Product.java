@@ -14,10 +14,11 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity @Getter @Setter
+@Entity @Getter @Setter @AllArgsConstructor
 public class Product {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -30,12 +31,25 @@ public class Product {
 	private BigDecimal price;
 	private int unitStock;
 	private String imageURL;
+	private String imageURL2;
 	@ManyToOne 
 	@JoinColumn(name="category_id" , nullable=false)
 	private Category category;
 	
 	public Product() {
 		super();
+	}
+
+	public Product(@NotNull String name, String description, Date dateCreated, BigDecimal price,
+			int unitStock, String imageURL, Category category) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.dateCreated = dateCreated;
+		this.price = price;
+		this.unitStock = unitStock;
+		this.imageURL = imageURL;
+		this.category = category;
 	}
 	
 	
