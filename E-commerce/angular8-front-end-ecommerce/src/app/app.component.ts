@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
 
   private roles: string[];
   isLoggedIn = false;
@@ -15,11 +15,11 @@ export class AppComponent implements OnInit{
   showUserBoard = false;
   username: string;
 
-  constructor(private tokenStorageService: TokenStorageService , private router : Router) { }
+  constructor(private tokenStorageService: TokenStorageService, private router: Router) { }
 
   ngOnInit() {
-  
-  this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
 
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
@@ -34,8 +34,8 @@ export class AppComponent implements OnInit{
 
   logout() {
     this.tokenStorageService.signOut();
- //   window.location.reload();
- this.router.navigateByUrl("/login");
+    //   window.location.reload();
+    this.router.navigateByUrl("/");
   }
-  
+
 }

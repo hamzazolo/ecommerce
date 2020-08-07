@@ -1,3 +1,7 @@
+<ngx-spinner type="ball-clip-rotate" size="default" bdColor="rgba(51,51,51,0.8)">
+  <p style="color:azure">Please wait...</p>
+</ngx-spinner>
+
 <div class="row mt-3">
   <div class="col-lg-3 mb-2">
     <app-categorie></app-categorie>
@@ -12,11 +16,11 @@
                     <img class="pic-2" [src]="product.imageURL2">
                 </a>
                 <ul class="social">
-                    <li><a href="" class="fa fa-search"></a></li>
-                    <li><a href="" class="fa fa-shopping-bag"></a></li>
-                    <li><a href="" class="fa fa-shopping-cart"></a></li>
+                    <li><a (click)="open(product)" class="fa fa-search" aria-label="Quique view"></a></li>
+                  <!--  <li><a href="" class="fa fa-shopping-bag"></a></li> -->
+                    <li><a (click)="addToCart(product)" class="fa fa-shopping-cart" ></a></li>
                 </ul>
-                <span class="product-new-label">New</span>
+               <!-- <span class="product-new-label">New</span> -->
             </div>
             <div class="product-content">
                 <h3 class="title"><a routerLink="/product/{{product.id}}">{{product.name}}</a></h3>
@@ -33,27 +37,9 @@
             </div>
         </div>
     </div>
-      <!-- <div class="col-lg-4 col-md-6 mb-4" *ngFor="let product of products">
-        <div class="card h-100">
-          <a routerLink="/product/{{product.id}}"><img class="card-img-top" [src]="product.imageURL"></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a routerLink="/product/{{product.id}}">{{product.name}}</a>
-            </h4>
-            <h5>{{product.price |  currency:'DH' : 'symbol': '0.2-2' :'fr'}}</h5>
-            <p class="card-text">{{product.description}}
-            </p>
-
-          </div>
-          <div class="card-footer">
-            <button class="btn btn-warning btn-lg btn-block">
-              <i class="fa fa-cart-arrow-down mr-1" aria-hidden="true"></i>
-            </button>
-          </div>
-        </div>
-      </div> -->
+      
  
-      <div class="col-md-12 alert alert-warning text-center" *ngIf="products?.length <= 0">
+      <div class="col-md-12 alert alert-warning text-center" *ngIf="products?.length == 0">
         Aucun produit
       </div>
 

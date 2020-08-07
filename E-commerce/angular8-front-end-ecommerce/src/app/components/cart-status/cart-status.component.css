@@ -1,8 +1,8 @@
 .cart-basket {
     font-size: .6rem;
     position: absolute;
-    top: 2px;
-    right: 14em;
+    top: 20px;
+    right: 14.1em;
     width: 15px;
     height: 15px;
     color: #fff;
@@ -12,4 +12,8 @@
   .custom-panel{
     background-color: #78e08f;
     border-radius: 50%;
+}
+
+.hide{
+  visibility: hidden;
 }

@@ -1,5 +1,5 @@
-<a class="btn custom-panel">
+<a class="btn custom-panel" routerLink="/cart-items">
     <i class="fas fa-shopping-bag">
-      <span class="cart-basket d-flex align-items-center justify-content-center" >2</span>
+      <span class="cart-basket d-flex align-items-center justify-content-center"  *ngIf="totalQuantity > 0">{{totalQuantity}}</span>
     </i>
   </a>

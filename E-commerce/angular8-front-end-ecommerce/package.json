@@ -25,6 +25,7 @@
     "bootstrap": "^4.5.1",
     "jw-angular-pagination": "^1.1.0",
     "jwt-decode": "^2.2.0",
+    "ngx-spinner": "^8.1.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
