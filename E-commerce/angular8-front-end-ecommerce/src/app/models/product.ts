@@ -5,4 +5,5 @@ export class Product {
     price:number;
     unitStock:number;
     imageURL:string;
+    imageURL2:string;
 }

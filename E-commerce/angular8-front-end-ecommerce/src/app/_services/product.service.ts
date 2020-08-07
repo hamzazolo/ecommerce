@@ -16,9 +16,9 @@ export class ProductService {
     return this.http.get<GetProductResponse>(query);
   }
 
-  public getProducts(){
-    const query =`${this.baseUrl}/allProducts`;
-    return this.http.get<Product[]>(query);
+  public getProducts(page:number, size:number){
+    const query =`${this.baseUrl}/allProducts?page=${page}&size=${size}`;
+    return this.http.get<GetProductResponse>(query);
   }
 
   getProduct(id:number){
@@ -34,5 +34,6 @@ interface GetProductResponse{
   totalElements:number,
   totalPages : number,
   size:number,
-  number:number
+  number:number,
+  
 }

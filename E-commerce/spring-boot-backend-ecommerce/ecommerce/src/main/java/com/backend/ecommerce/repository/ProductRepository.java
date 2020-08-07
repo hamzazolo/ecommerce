@@ -12,4 +12,6 @@ import com.backend.ecommerce.models.Product;
 public interface ProductRepository extends JpaRepository<Product, Long>{
 
 	Page<Product> findByCategoryId(Long id, Pageable pageable);
+	
+	Page<Product> findAll(Pageable pageable);
 }

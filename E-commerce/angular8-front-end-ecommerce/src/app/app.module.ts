@@ -3,6 +3,9 @@ import { NgModule, LOCALE_ID } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
+import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgxSpinnerModule} from 'ngx-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -20,6 +23,9 @@ import localeFr from '@angular/common/locales/fr';
 import { registerLocaleData } from '@angular/common';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { from } from 'rxjs';
+import { CartStatusComponent } from './components/cart-status/cart-status.component';
+import { CartItemsComponent } from './components/cart-items/cart-items.component';
+import { NgbModelComponent } from './components/ngb-model/ngb-model.component';
 registerLocaleData(localeFr);
 
 const routes : Routes=[
@@ -32,7 +38,8 @@ const routes : Routes=[
   {path:'' , component : HomeComponent},
   {path : 'notFound', component : NotFoundComponent},
   {path : 'category/:id' , component : HomeComponent},
-  {path : 'product/:id' , component : ProductDetailsComponent}
+  {path : 'product/:id' , component : ProductDetailsComponent},
+  {path : 'cart-items' , component : CartItemsComponent}
 ]
 @NgModule({
   declarations: [
@@ -45,12 +52,18 @@ const routes : Routes=[
     BoardAdminComponent,
     NotFoundComponent,
     CategorieComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    CartStatusComponent,
+    CartItemsComponent,
+    NgbModelComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    NgbModule,
+    NgxSpinnerModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [
@@ -58,6 +71,7 @@ const routes : Routes=[
     authInterceptorProviders
   ],
   exports: [RouterModule],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents : [NgbModelComponent]
 })
 export class AppModule { }
