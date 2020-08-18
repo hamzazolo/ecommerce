@@ -52,14 +52,12 @@ export class HomeComponent implements OnInit {
   }
 
   handleListProduct(){
-    console.log("page : ",this.currentPage ," and pageSize : "+this.pageSize)
     this.productService.getProducts(this.currentPage -1 ,this.pageSize).subscribe(
       this.extractData()
       )
   }
 
   handleByCategoryId(){
-    console.log("handleByCategoryId")
     const  hasCategoryId : boolean = this._activatedRoute.snapshot.paramMap.has('id');
     if(hasCategoryId){
      
@@ -70,8 +68,6 @@ export class HomeComponent implements OnInit {
 
     //i will setting the current page and the size
     if(this.previousCategory != this.currentCategoryId){
-      console.log("previouse category : ",this.previousCategory)
-      console.log("current category : ",this.currentCategoryId)
       this.currentPage =1;
     }
     this.previousCategory = this.currentCategoryId;
@@ -82,7 +78,6 @@ export class HomeComponent implements OnInit {
     
   }
   updatePageSize(pageSize:number){
-  console.log("i'm in update page size");
   this.pageSize = pageSize;
   this.currentPage = 1;
   this.listProduct();
@@ -93,8 +88,6 @@ export class HomeComponent implements OnInit {
       this.totalRecords = data.totalElements ;
       this.pageSize= data.size;
       this.currentPage = data.number + 1;
-      console.log("total elements",data.totalElements)
-      console.log("currentPage  "+this.currentPage)
       this.spinner.hide();
     }
 
@@ -102,7 +95,6 @@ export class HomeComponent implements OnInit {
   }
 
   addToCart(product:Product){
-    console.log("product name : ",product.name," product price : ",product.price);
     const cartItem = new CartItem(product);
     this.cartService.addToCart(cartItem);
   }

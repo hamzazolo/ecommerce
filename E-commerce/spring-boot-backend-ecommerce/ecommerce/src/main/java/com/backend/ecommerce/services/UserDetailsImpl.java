@@ -29,6 +29,8 @@ public class UserDetailsImpl implements UserDetails {
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
+	private String nom;
+	private String prenom;
 	private String username;
 	private String email;
 	@JsonIgnore
@@ -39,7 +41,7 @@ public class UserDetailsImpl implements UserDetails {
 		List<GrantedAuthority> authorities = user.getRoles().stream()
 				.map(role -> new SimpleGrantedAuthority(role.getName().name())).collect(Collectors.toList());
 
-		return new UserDetailsImpl(user.getId(), user.getUsername(), user.getEmail(), user.getPassword(), authorities);
+		return new UserDetailsImpl(user.getId(),user.getNom(), user.getPrenom(), user.getUsername(), user.getEmail(), user.getPassword(), authorities);
 
 	}
 	

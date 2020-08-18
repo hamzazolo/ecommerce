@@ -1,81 +1,168 @@
-<div id="login-body container">
-    <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
-        <div class="container">
-            <div class="card login-card">
-                <div class="row no-gutters">
-                    <div class="col-md-5">
-                        <img src="assets/images/register.jpg" alt="login" class="login-card-img">
+<ngx-spinner type="ball-clip-rotate" size="default" bdColor="rgba(51,51,51,0.8)">
+    <p style="color:azure">Please wait...</p>
+</ngx-spinner>
+
+<div class="container-login100 ">
+    <div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
+        <form class="login100-form validate-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <span class="login100-form-title p-b-37">
+                Sign Up
+            </span>
+            <span *ngIf="isLoginFailed" class="text-center mb-2">
+                <p class="text-danger">{{message}} </p>
+            </span>
+            <span *ngIf="isSucces" class="text-center mb-2">
+                <p class="text-success">{{message}} </p>
+            </span>
+            <!--Name -->
+            <div class="form-row  m-b-25">
+                <!-- first name -->
+                <div class="form-group col-md-6">
+                    <div class="wrap-input100 validate-input ">
+                        <input class="input100" type="text" name="pass" formControlName="nom" placeholder="First name"
+                            [ngClass]="{'has-error': registerForm.get('nom').errors && (registerForm.get('nom').touched || registerForm.get('nom').dirty) }">
+                        <span class="focus-input100"></span>
                     </div>
-                    <div class="col-md-7">
-                        <div class="card-body">
-                            <div class="brand-wrapper">
-                                <img src="assets/images/logo.svg" alt="logo" class="logo">
-                            </div>
-                            <p class="login-card-description">Sign into your account</p>
-                            <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm"
-                                novalidate>
-                                <div class="form-group">
-                                    <label for="username" class="sr-only">Username</label>
-                                    <input type="text" name="username" [(ngModel)]="form.username" #username="ngModel"
-                                        id="username" class="form-control" placeholder="Username" minlength="3"
-                                        maxlength="20" required>
-
-                                    <div class="alert-danger" role="alert" *ngIf="f.submitted && username.invalid">
-                                        <div *ngIf="username.errors.required">Username is required</div>
-                                        <div *ngIf="username.errors.minlength">
-                                            Username must be at least 3 characters
-                                        </div>
-                                        <div *ngIf="username.errors.maxlength">
-                                            Username must be at most 20 characters
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group mb-4">
-                                    <label for="email" class="sr-only">Email</label>
-                                    <input type="email" name="email" [(ngModel)]="form.email" email #email="ngModel"
-                                        id="email" class="form-control" placeholder="Email address" required>
-
-                                    <div class="alert-danger" role="alert" *ngIf="f.submitted && email.invalid">
-                                        <div *ngIf="email.errors.required">Email is required</div>
-                                        <div *ngIf="email.errors.email">
-                                            Email must be a valid email address
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group mb-4">
-                                    <label for="password" class="sr-only">Password</label>
-                                    <input type="password" name="password" [(ngModel)]="form.password"
-                                        #password="ngModel" minlength="6" id="password" class="form-control"
-                                        placeholder="***********" required>
-
-                                    <div class="alert alert-danger" role="alert"
-                                        *ngIf="f.submitted && password.invalid">
-                                        <div *ngIf="password.errors.required">Password required</div>
-                                        <div *ngIf="password.errors.minlength">Password must be at least 6 characters
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group mb-4">
-                                    <div class="form-group">
-                                        <div class="alert alert-warning" role="alert"
-                                        *ngIf="f.submitted && isSignUpFailed">
-                                            Signup failed!<br />{{ errorMessage }}
-                                        </div>
-                                    </div>
-                                </div>
-                                <button name="login" id="login" class="btn btn-block login-btn mb-4">
-                                    Sign up
-                                </button>
-
-
-                            </form>
-                            <div class="alert alert-success" *ngIf="isSuccessful">
-                                Your registration is successful!
-                            </div>
-                           
-
-                        </div>
-                    </div>
+                    <span class="help-block text-danger "
+                        *ngIf="registerForm.get('nom').errors && (registerForm.get('nom').touched || registerForm.get('nom').dirty)">
+                        <span *ngIf="registerForm.get('nom').errors.required">
+                            <p class="text-danger ml-2">First name is required</p>
+                        </span>
+                    </span>
                 </div>
+                <!-- first name  end! -->
+                <!-- last name  ! -->
+                <div class="form-group col-md-6">
+                    <div class="wrap-input100 validate-input">
+                        <input class="input100" type="prenom" name="pass" formControlName="prenom"
+                            placeholder="Last name"
+                            [ngClass]="{'has-error': registerForm.get('prenom').errors && (registerForm.get('prenom').touched || registerForm.get('confirmPassword').dirty) }">
+                        <span class="focus-input100"></span>
+                    </div>
+                    <span class="help-block text-danger "
+                        *ngIf="registerForm.get('prenom').errors && (registerForm.get('prenom').touched || registerForm.get('prenom').dirty)">
+                        <span *ngIf="registerForm.get('prenom').errors.required">
+                            <p class="text-danger ml-2">Last name is required</p>
+                        </span>
+                    </span>
+
+                </div>
+                <!-- last name  end! -->
+            </div>
+            <!--Name end!-->
+            <!--Email-->
+            <div class="form-row  m-b-25">
+            <div class="form-group col-md-6">
+                <div class="wrap-input100 validate-input " data-validate="Enter username or email">
+                    <input class="input100" type="text" name="email" formControlName="email" placeholder="E-mail"
+                        [ngClass]="{'has-error': registerForm.get('email').errors && (registerForm.get('email').touched || registerForm.get('email').dirty) }">
+                    <span class="focus-input100"></span>
+                </div>
+                <span class="help-block text-danger "
+                    *ngIf="registerForm.get('email').errors && (registerForm.get('email').touched || registerForm.get('email').dirty)">
+                    <span *ngIf="registerForm.get('email').errors.required">
+                        <p class="text-danger ml-2">E-mail is required</p>
+                    </span>
+                </span>
+                <span class="help-block text-danger " *ngIf="registerForm.get('email').errors?.email">
+                    <p class="text-danger ml-2">Invalide email</p>
+                </span>
+            </div>
+            <!--Email end! -->
+            <!--Username-->
+            <div class="form-group col-md-6">
+                <div class="wrap-input100 validate-input " data-validate="Enter username or email">
+                    <input class="input100" type="text" name="username" formControlName="username"
+                        placeholder="Username"
+                        [ngClass]="{'has-error': registerForm.get('username').errors && (registerForm.get('username').touched || registerForm.get('username').dirty) }">
+                    <span class="focus-input100"></span>
+                </div>
+                <span class="help-block text-danger "
+                    *ngIf="registerForm.get('username').errors && (registerForm.get('username').touched || registerForm.get('username').dirty)">
+                    <span *ngIf="registerForm.get('username').errors.required">
+                        <p class="text-danger ml-2">Username is required</p>
+                    </span>
+                </span>
+                <span class="help-block text-danger " *ngIf="registerForm.get('username').errors?.minlength">
+                    <p class="text-danger ml-2">Username must be greater than 2 charchters</p>
+                </span>
             </div>
         </div>
+            <!--Username end! -->
+
+            <div class="form-row  m-b-25">
+                <!-- password -->
+                <div class="form-group col-md-6">
+                    <div class="wrap-input100 validate-input " data-validate="Enter password">
+                        <input class="input100" type="password" name="pass" formControlName="password"
+                            placeholder="Password"
+                            [ngClass]="{'has-error': registerForm.get('password').errors && (registerForm.get('password').touched || registerForm.get('password').dirty) }">
+                        <span class="focus-input100"></span>
+                    </div>
+                    <span class="help-block text-danger "
+                        *ngIf="registerForm.get('password').errors && (registerForm.get('password').touched || registerForm.get('password').dirty)">
+                        <span *ngIf="registerForm.get('password').errors.required">
+                            <p class="text-danger ml-2">Password is required</p>
+                        </span>
+                    </span>
+                    <span class="help-block text-danger" *ngIf="registerForm.get('password').errors?.minlength">
+                        <p class="text-danger  ml-2"> Password must be greater than 6 charchter</p>
+                    </span>
+                </div>
+                <!-- password end! -->
+                <!-- Confirm password -->
+                <div class="form-group col-md-6">
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <input class="input100" type="password" name="pass" formControlName="confirmPassword"
+                            placeholder="Confirm password"
+                            [ngClass]="{'has-error': registerForm.get('confirmPassword').errors && (registerForm.get('confirmPassword').touched || registerForm.get('confirmPassword').dirty) }">
+                        <span class="focus-input100"></span>
+                    </div>
+                    <span class="help-block text-danger "
+                        *ngIf="registerForm.get('confirmPassword').errors && (registerForm.get('confirmPassword').touched || registerForm.get('confirmPassword').dirty)">
+                        <span *ngIf="registerForm.get('confirmPassword').errors.required">
+                            <p class="text-danger ml-2">Password is required</p>
+                        </span>
+                    </span>
+                    <span class="help-block text-danger" *ngIf="registerForm.get('confirmPassword').errors?.minlength">
+                        <p class="text-danger  ml-2"> Password must be greater than 6 charchter</p>
+                    </span>
+                </div>
+                <!-- Confirm password end! -->
+            </div>
+
+            <div class="container-login100-form-btn">
+                <button class="login100-form-btn" [disabled]="!registerForm.valid">
+                    <div class="spinner-border text-left spinner-border-sm mr-2" role="status" *ngIf="isLoading">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    Sign Up
+                </button>
+            </div>
+
+            <div class="text-center p-t-57 p-b-20">
+                <span class="txt1">
+                    Or sing up with
+                </span>
+            </div>
+
+            <div class="flex-c p-b-60">
+                <a href="#" class="login100-social-item">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+
+                <a href="#" class="login100-social-item">
+                    <img src="/assets/images/icons/icon-google.png" alt="GOOGLE">
+                </a>
+            </div>
+
+            <div class="text-center">
+                <a routerLink="/login" class="txt2 hov1">
+                    Sign In
+                </a>
+            </div>
+        </form>
+
+
+    </div>
+</div>

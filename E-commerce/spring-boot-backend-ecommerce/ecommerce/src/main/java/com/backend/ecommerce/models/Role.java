@@ -18,7 +18,7 @@ import lombok.Setter;
 
 @Entity
 @Table(name="roles")
-@Getter @Setter @NoArgsConstructor 
+@Getter @Setter 
 public class Role {
 
 	@Id
@@ -27,4 +27,10 @@ public class Role {
 	@Enumerated(EnumType.STRING)
 	@Column(length = 20)
 	private ERole name;
+	
+	public Role() {
+		super();
+	}
+	
+	
 }

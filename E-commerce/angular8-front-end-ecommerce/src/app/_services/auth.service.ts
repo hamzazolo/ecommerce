@@ -16,20 +16,13 @@ export class AuthService {
    
   constructor(private http : HttpClient) { }
   
-  login(credentials):Observable<any>{
-
-    return this.http.post(AUTH_API + 'signin' , {
-      username : credentials.username,
-      password : credentials.password
-    }, httpOptions);
+  login(username: any, password:any):Observable<any>{
+    console.log("username c : ",username, "password c : ",password)
+    return this.http.post(AUTH_API + 'signin' , {username ,password }, httpOptions);
   }
 
-  register(user) : Observable<any>{
-    return this.http.post(AUTH_API + 'signup',{
-      username : user.username,
-      password : user.password,
-      email : user.email,
-    },httpOptions);
+  register(nom:string,prenom:string,email:string , username : string , password : string) : Observable<any>{
+    return this.http.post(AUTH_API + 'signup',{nom,prenom,username , password , email },httpOptions);
   }
 
   

@@ -1,0 +1,7 @@
+export class UserRequest {
+    
+    id:number;
+    nom:string;
+    prenom:string;
+    email:string;
+}

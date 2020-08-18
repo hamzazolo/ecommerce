@@ -65,7 +65,7 @@ public class AuthController {
 		List<String> roles = userDetailsImpl.getAuthorities().stream().map(item -> item.getAuthority())
 				.collect(Collectors.toList());
 		return ResponseEntity.ok(new JwtResponse(jwt, userDetailsImpl.getId(), userDetailsImpl.getUsername(),
-				userDetailsImpl.getEmail(), roles));
+				userDetailsImpl.getEmail(), roles,userDetailsImpl.getNom(),userDetailsImpl.getPrenom()));
 	}
 
 	@PostMapping("/signup")
@@ -80,7 +80,7 @@ public class AuthController {
 
 		// create new user's account
 
-		User user = new User(signupRequest.getUsername(),encoder.encode(signupRequest.getPassword()),signupRequest.getEmail());
+		User user = new User(signupRequest.getNom(),signupRequest.getPrenom(),signupRequest.getUsername(),encoder.encode(signupRequest.getPassword()),signupRequest.getEmail());
 		Set<String> strRoles = signupRequest.getRole();
 		Set<Role> roles = new HashSet<>();
 

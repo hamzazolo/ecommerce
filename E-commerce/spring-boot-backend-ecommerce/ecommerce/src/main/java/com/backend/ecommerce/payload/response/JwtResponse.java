@@ -14,12 +14,27 @@ public class JwtResponse {
 	private String username;
 	private String email;
 	private List<String> roles;
+	private String nom;
+	private String prenom;
 	
-	public JwtResponse(String accessToken, Long id, String username, String email, List<String> roles) {
+	public JwtResponse(String accessToken, Long id, String username, String email, List<String> roles, String nom, String prenom) {
 		this.token = accessToken;
 		this.id = id;
 		this.username = username;
 		this.email = email;
 		this.roles = roles;
+		this.nom=nom;
+		this.prenom=prenom;
 	}
+
+	public JwtResponse(Long id, String email, List<String> roles, String nom, String prenom) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.roles = roles;
+		this.nom = nom;
+		this.prenom = prenom;
+	}
+	
+	
 }

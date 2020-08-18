@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule , ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -26,6 +26,7 @@ import { from } from 'rxjs';
 import { CartStatusComponent } from './components/cart-status/cart-status.component';
 import { CartItemsComponent } from './components/cart-items/cart-items.component';
 import { NgbModelComponent } from './components/ngb-model/ngb-model.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 registerLocaleData(localeFr);
 
 const routes : Routes=[
@@ -55,11 +56,13 @@ const routes : Routes=[
     ProductDetailsComponent,
     CartStatusComponent,
     CartItemsComponent,
-    NgbModelComponent
+    NgbModelComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
     NgxSpinnerModule,
