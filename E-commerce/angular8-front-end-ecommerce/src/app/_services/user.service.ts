@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
 import { UserRequest } from '../models/user-request';
+import { PasswordDTO } from '../models/password-dto';
 
 const API_URL = 'http://localhost:6061/api/test/';
 const API_USER = 'http://localhost:6061/api/user/'
@@ -33,5 +34,9 @@ export class UserService {
   updateInformations(userRequest:UserRequest) : Observable<any>{
     console.log("user is : ",userRequest)
     return this.http.put(API_USER+'users',userRequest);
+  }
+
+  updatePassword(passwordDTO:PasswordDTO) : Observable<any>{
+    return this.http.put(API_USER+'updatePassword',passwordDTO,{responseType: "text"});
   }
 }

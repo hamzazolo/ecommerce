@@ -1,0 +1,14 @@
+.bg-color,.bg-color:active:focus {
+    background-color: #78e08f !important;
+    border: 1px solid #78e08f !important;
+    border-color: #78e08f !important;
+    box-shadow: none !important;
+}
+
+.has-error{
+    border: 1px solid red  !important;
+   
+  }
+  
+
+

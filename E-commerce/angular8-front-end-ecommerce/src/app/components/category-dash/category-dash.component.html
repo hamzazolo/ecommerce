@@ -1,0 +1,42 @@
+<div class="container mt-5">
+    <div class="col-md-6 offset-3">
+        <div class="alert alert-danger alert-dismissible fade show" *ngIf="isMsgError" role="alert">
+            <strong><i class="fas fa-exclamation-triangle"></i></strong> {{msgError}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="close()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+
+        <div class="form-inline">
+            <div class="form-group mx-sm-3 mb-2">
+                <label for="category" class="sr-only">Category</label>
+                <input type="text" class="form-control" placeholder="Category name" [(ngModel)]="category.nameCategory"
+                    [ngClass]="{'error': inputError}">
+            </div>
+            <button (click)="addCategory()" type="submit" class="btn btn-primary mb-2" *ngIf="!updateCategory"><i
+                    class="fa fa-paper-plane"></i></button>
+            <button type="submit" class="btn btn-success mb-2" *ngIf="updateCategory" (click)="updateCategoryEnd()"><i
+                    class="fas fa-pencil-alt"></i></button>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Category name</th>
+                <th scope="col">Options</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let cat of categoreis">
+            <tr>
+                <td>{{cat.nameCategory | uppercase}}</td>
+                <td>
+                    <span class="btn btn-success" (click)="updateCategoryStart(cat)"><i
+                            class="fas fa-pencil-alt"></i></span>
+                    <span class="btn btn-danger ml-1" (click)="deleteCategory(cat.id)"><i
+                            class="fas fa-trash-alt"></i></span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

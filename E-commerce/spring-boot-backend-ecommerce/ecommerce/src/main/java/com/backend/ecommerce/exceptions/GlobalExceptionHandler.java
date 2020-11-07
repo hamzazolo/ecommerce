@@ -29,4 +29,10 @@ public class GlobalExceptionHandler {
 	          ErrorDetails errorDetails = new ErrorDetails(new Date(),ex.getMessage().intern(), request.getDescription(false));    
 	         return new ResponseEntity<>(errorDetails, null, HttpStatus.BAD_REQUEST);
 	    }
+	    
+	    @ExceptionHandler(MaxUploadSizeExceededException.class)
+	    public ResponseEntity<?> uploadSizeExceeded(MaxUploadSizeExceededException ex, WebRequest request) {
+	         ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getMessage(), request.getDescription(false));
+	         return new ResponseEntity<>(errorDetails, HttpStatus.BANDWIDTH_LIMIT_EXCEEDED);
+	    }
 }

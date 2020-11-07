@@ -27,7 +27,12 @@ import { CartStatusComponent } from './components/cart-status/cart-status.compon
 import { CartItemsComponent } from './components/cart-items/cart-items.component';
 import { NgbModelComponent } from './components/ngb-model/ngb-model.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { CategoryDashComponent } from './components/category-dash/category-dash.component';
 registerLocaleData(localeFr);
+import { QuillModule } from 'ngx-quill';
+import { UpdateProductComponent } from './components/update-product/update-product.component';
+import {ToastrModule} from 'ngx-toastr';
+import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 
 const routes : Routes=[
   {path:'home' , component : HomeComponent},
@@ -40,7 +45,9 @@ const routes : Routes=[
   {path : 'notFound', component : NotFoundComponent},
   {path : 'category/:id' , component : HomeComponent},
   {path : 'product/:id' , component : ProductDetailsComponent},
-  {path : 'cart-items' , component : CartItemsComponent}
+  {path : 'cart-items' , component : CartItemsComponent},
+  {path : 'category-dashbord' , component : CategoryDashComponent},
+  {path : 'update-product/:id' , component : UpdateProductComponent}
 ]
 @NgModule({
   declarations: [
@@ -57,7 +64,10 @@ const routes : Routes=[
     CartStatusComponent,
     CartItemsComponent,
     NgbModelComponent,
-    NavBarComponent
+    NavBarComponent,
+    CategoryDashComponent,
+    UpdateProductComponent,
+    SafeHtmlPipe
   ],
   imports: [
     BrowserModule,
@@ -67,6 +77,8 @@ const routes : Routes=[
     NgbModule,
     NgxSpinnerModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    QuillModule.forRoot(),
     RouterModule.forRoot(routes)
   ],
   providers: [

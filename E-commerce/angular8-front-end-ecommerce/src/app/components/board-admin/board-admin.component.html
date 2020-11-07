@@ -1,7 +1,172 @@
-<div class="container">
-    <div class="jumbotron" >
-      <p>{{ content }}</p>
+<div class="container mt-4">
+  <a *ngIf="!addProduct" (click)="showForm()" class="btn btn-primary bg-color mb-4">
+    <i class="fas fa-plus-circle"></i>
+  </a>
+  <!-- Add product form start -->
+
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()" *ngIf="addProduct">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Product name</label>
+        <input type="text" class="form-control" placeholder="Product name" formControlName="productName"
+          [ngClass]="{'has-error': productForm.get('productName').errors && (productForm.get('productName').touched || productForm.get('productName').dirty)}">
+        <span class="help-block text-danger "
+          *ngIf="productForm.get('productName').errors && (productForm.get('productName').touched || productForm.get('productName').dirty)">
+          <span *ngIf="productForm.get('productName').errors.required">
+            <p class="text-danger ml-2">Product name is required</p>
+          </span>
+        </span>
+      </div>
+      <div class="form-group col-md-6">
+        <label>Price</label>
+        <input type="number" class="form-control" placeholder="Price" formControlName="price"
+          [ngClass]="{'has-error': productForm.get('price').errors && (productForm.get('price').touched || productForm.get('price').dirty)}">
+        <span class="help-block text-danger "
+          *ngIf="productForm.get('price').errors && (productForm.get('price').touched || productForm.get('price').dirty)">
+          <span *ngIf="productForm.get('price').errors.required">
+            <p class="text-danger ml-2">Price is required</p>
+          </span>
+        </span>
+      </div>
     </div>
-    
+    <!-- <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Image URL 1</label>
+        <input type="text" class="form-control" placeholder="Image URL 1" formControlName="imageURL1"
+          [ngClass]="{'has-error': productForm.get('imageURL1').errors && (productForm.get('imageURL1').touched || productForm.get('imageURL1').dirty)}">
+        <span class="help-block text-danger "
+          *ngIf="productForm.get('imageURL1').errors && (productForm.get('imageURL1').touched || productForm.get('imageURL1').dirty)">
+          <span *ngIf="productForm.get('imageURL1').errors.required">
+            <p class="text-danger ml-2">Imgae URL 1 is required</p>
+          </span>
+        </span>
+      </div>
+      <div class="form-group col-md-6">
+        <label>Image URL 2</label>
+        <input type="text" class="form-control" placeholder="Image URL 2" formControlName="imageURL2"
+          [ngClass]="{'has-error': productForm.get('imageURL2').errors && (productForm.get('imageURL2').touched || productForm.get('imageURL2').dirty)}">
+        <span class="help-block text-danger "
+          *ngIf="productForm.get('imageURL2').errors && (productForm.get('imageURL2').touched || productForm.get('imageURL2').dirty)">
+          <span *ngIf="productForm.get('imageURL2').errors.required">
+            <p class="text-danger ml-2">Image URL 2 is required</p>
+          </span>
+        </span>
+      </div>
+    </div> -->
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Unit stock</label>
+        <input type="number" class="form-control" placeholder="Unit stock" formControlName="stock"
+          [ngClass]="{'has-error': productForm.get('stock').errors && (productForm.get('stock').touched || productForm.get('stock').dirty)}">
+
+
+
+        <span class="help-block text-danger"
+          *ngIf="productForm.get('stock').errors && (productForm.get('stock').touched || productForm.get('stock').dirty)">
+          <span *ngIf="productForm.get('stock').errors.required">
+            <p class="text-danger ml-2">Unit stock is required</p>
+          </span>
+        </span>
+      </div>
+      <div class="form-group col-md-6">
+        <label>Category</label>
+        <select class="form-control" formControlName="categorySelect"
+          (change)="selectChangeHandler($event.target.value)">
+          <option *ngFor="let cat of categoreis" [value]="cat.id" #categorySelect>{{cat.nameCategory}}</option>
+        </select>
+        <span class="help-block text-danger"
+          *ngIf="productForm.get('categorySelect').errors && (productForm.get('categorySelect').touched || productForm.get('categorySelect').dirty)">
+          <span *ngIf="productForm.get('categorySelect').errors.required">
+            <p class="text-danger ml-2">Category is required</p>
+          </span>
+        </span>
+      </div>
+      <div class="form-group col-md-6">
+        <label>Principel image</label>
+        <div class="custom-file">
+          <input type="file" id="validatedCustomFile" class="custom-file-input" formControlName="imageFile"
+            (change)="onFileChanged($event)" required [ngClass]="{'has-error': productForm.get('imageFile').errors}">
+          <label class="custom-file-label" for="validatedCustomFile">{{imageName}}</label>
+          <div class="invalid-feedback" *ngIf="productForm.get('imageFile').errors">Image required</div>
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label>Secend image</label>
+        <div class="custom-file">
+          <input type="file" id="validatedCustomFile2" class="custom-file-input" formControlName="imageFile2"
+            (change)="onFileChangedSecendImage($event)" required
+            [ngClass]="{'has-error': productForm.get('imageFile2').errors}">
+          <label class="custom-file-label" for="validatedCustomFile2">{{secendImageName}}</label>
+          <div class="invalid-feedback" *ngIf="productForm.get('imageFile2').errors">Image required</div>
+        </div>
+      </div>
+    </div>
+    <quill-editor [styles]="{height: '200px'}" class="mb-5" formControlName="description" [modules]="editorModules"
+      (onEditorChanged)="changedEditor($event)"
+      [ngClass]="{'has-error': productForm.get('description').errors && (productForm.get('description').touched || productForm.get('description').dirty)}">
+    </quill-editor>
+    <span class="help-block text-danger "
+      *ngIf="productForm.get('description').errors && (productForm.get('description').touched || productForm.get('description').dirty)">
+      <span *ngIf="productForm.get('description').errors.required">
+        <p class="text-danger ml-2">Description is required</p>
+      </span>
+    </span>
+    <div>
+      <p [innerHTML]="desc"></p>
+    </div>
+    <div class="row justify-content-md-center">
+      <button type="button" class="btn btn-primary pull-right mt-3 btn-lg" (click)="cancel()">Cancel</button>
+      <button type="submit" class="btn btn-primary  bg-color  ml-3 mt-3 btn-lg" [disabled]="!productForm.valid">
+        <div class="spinner-border text-left spinner-border-sm mr-2" role="status" *ngIf="isLoading">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <i class="fas fa-plus-circle mr-2"></i>Add
+      </button>
+    </div>
+  </form>
+
+
+
+  <!--Add product form End -->
+  <table class="table table-striped" *ngIf="!addProduct">
+    <thead>
+      <tr>
+        <th scope="col">Product</th>
+        <th scope="col">Unite stock</th>
+        <th scope="col">Price</th>
+        <th scope="col">Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products ">
+        <td>
+          <img [src]="product.imageURL" class="mr-2" style="width: 20px">
+          <ngb-highlight [result]="product.name" [term]="filter.value"></ngb-highlight>
+        </td>
+        <td>
+          <ngb-highlight [result]="product.unitStock" [term]="filter.value"></ngb-highlight>
+        </td>
+        <td>
+          <ngb-highlight [result]="product.price" [term]="filter.value"></ngb-highlight>
+        </td>
+        <td>
+          <a class="btn btn-primary" routerLink="/product/{{product.id}}"><i class="fas fa-eye"></i></a>
+          <a class="btn btn-success ml-1" routerLink="/update-product/{{product.id}}"><i
+              class="fas fa-pencil-alt"></i></a>
+          <button class="btn btn-danger ml-1" (click)="deleteProduct(product.id)"><i
+              class="fas fa-trash-alt"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-between p-2" *ngIf="!addProduct">
+    <ngb-pagination [collectionSize]="totalRecords" [(page)]="page" [pageSize]="pageSize" (pageChange)="listProduct()">
+    </ngb-pagination>
+
+    <select class="custom-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="listProduct()">
+      <option [ngValue]="5">5</option>
+      <option [ngValue]="10">10</option>
+      <option [ngValue]="15">15</option>
+    </select>
   </div>
-  
+</div>

@@ -13,7 +13,6 @@ export class CategorieComponent implements OnInit {
   constructor(private categoryService:CategoryServiceService) { }
 
   ngOnInit() {
-      console.log("test")
     this.categoryService.getCategories().subscribe(
       data => this.categories = data
     )

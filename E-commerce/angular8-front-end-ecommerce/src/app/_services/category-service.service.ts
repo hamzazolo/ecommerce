@@ -13,6 +13,21 @@ export class CategoryServiceService {
   public getCategories(){
     return this.http.get<Category[]>(`${this.baseUrl}/categories`);
   }
+  public getCategoryById(id : number){
+    return this.http.get<Category>(`${this.baseUrl}/categories/${id}`);
+  }
 
+  
+  public saveCategory(category : Category){
+    return this.http.post<Category>(`${this.baseUrl}/saveCategory`,category);
+  }
+
+  public updateCategory(category : Category){
+    return this.http.put<Category>(`${this.baseUrl}/updateCategory`,category);
+  }
+
+  public deleteCategory(id : number){
+    return this.http.delete<any>(`${this.baseUrl}/deleteCategory/${id}`);
+  }
   
 }

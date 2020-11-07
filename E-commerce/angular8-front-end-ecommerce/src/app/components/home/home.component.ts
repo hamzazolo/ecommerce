@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
   currentCategoryId : number = 1;
   previousCategory : number =1;
   searchMode : boolean =false;
-
+  imageUpload = false;
   
 
   constructor(private productService:ProductService , private _activatedRoute:ActivatedRoute ,
