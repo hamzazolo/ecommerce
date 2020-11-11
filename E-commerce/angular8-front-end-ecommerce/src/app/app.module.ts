@@ -33,6 +33,7 @@ import { QuillModule } from 'ngx-quill';
 import { UpdateProductComponent } from './components/update-product/update-product.component';
 import {ToastrModule} from 'ngx-toastr';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 const routes : Routes=[
   {path:'home' , component : HomeComponent},
@@ -47,7 +48,9 @@ const routes : Routes=[
   {path : 'product/:id' , component : ProductDetailsComponent},
   {path : 'cart-items' , component : CartItemsComponent},
   {path : 'category-dashbord' , component : CategoryDashComponent},
-  {path : 'update-product/:id' , component : UpdateProductComponent}
+  {path : 'update-product/:id' , component : UpdateProductComponent},
+  {path : 'checkout' , component : CheckoutComponent}
+
 ]
 @NgModule({
   declarations: [
@@ -67,7 +70,8 @@ const routes : Routes=[
     NavBarComponent,
     CategoryDashComponent,
     UpdateProductComponent,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
