@@ -34,6 +34,11 @@ import { UpdateProductComponent } from './components/update-product/update-produ
 import {ToastrModule} from 'ngx-toastr';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import {CardModule} from 'ngx-card/ngx-card';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import { Error500Component } from './components/error500/error500.component';
+import { PaymentStatuComponent } from './components/payment-statu/payment-statu.component';
+
 
 const routes : Routes=[
   {path:'home' , component : HomeComponent},
@@ -44,12 +49,14 @@ const routes : Routes=[
   {path:'admin' , component : BoardAdminComponent },
   {path:'' , component : HomeComponent},
   {path : 'notFound', component : NotFoundComponent},
+  
   {path : 'category/:id' , component : HomeComponent},
   {path : 'product/:id' , component : ProductDetailsComponent},
   {path : 'cart-items' , component : CartItemsComponent},
   {path : 'category-dashbord' , component : CategoryDashComponent},
   {path : 'update-product/:id' , component : UpdateProductComponent},
-  {path : 'checkout' , component : CheckoutComponent}
+  {path : 'checkout' , component : CheckoutComponent},
+  {path : '**', component : NotFoundComponent}
 
 ]
 @NgModule({
@@ -71,7 +78,9 @@ const routes : Routes=[
     CategoryDashComponent,
     UpdateProductComponent,
     SafeHtmlPipe,
-    CheckoutComponent
+    CheckoutComponent,
+    Error500Component,
+    PaymentStatuComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +92,8 @@ const routes : Routes=[
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     QuillModule.forRoot(),
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    CardModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'fr-FR'},

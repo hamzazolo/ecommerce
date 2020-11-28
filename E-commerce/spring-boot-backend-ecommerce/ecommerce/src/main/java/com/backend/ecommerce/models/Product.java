@@ -28,6 +28,7 @@ public class Product {
 	private Long id;
     @NotNull
 	private String name;
+    @Column(columnDefinition="TEXT")
 	private String description;
 	private Date dateCreated;
 	private Date dateUpdated;

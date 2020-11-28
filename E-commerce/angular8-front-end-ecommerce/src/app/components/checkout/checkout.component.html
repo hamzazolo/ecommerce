@@ -1,7 +1,115 @@
-<form>
-  <input type="text" placeholder="Credit Card #" name="cardNumber">
-  <input type="text" placeholder="Expiration Month" name="expMonth">
-  <input type="text" placeholder="Expiration Year" name="expYear">
-  <input type="text" placeholder="CVC" name="cvc">
-  <button (click)="chargeCreditCard()">Submit</button>
-</form>
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-lg-3 mb-2">
+      <!-- <app-categorie></app-categorie> -->
+    </div>
+    <div class="col-lg-9">
+
+      <!--Payement card -->
+      <div class="col  ">
+        <form card container=".card-container" card-width="400" [messages]="messages" [placeholders]="placeholders"
+          [masks]="masks" formatting="false" debug="true" class="form-card" (ngSubmit)="chargeCreditCard()"
+          [formGroup]="paymentForm">
+          <h3><i class="fas fa-user"></i> Client informations</h3>
+          <div class="client-informations containerr col">
+
+            <div class="row mb-4">
+              <div class="col">
+                <input type="email" placeholder="Email" formControlName="email"
+                  [ngClass]="{'input-error': paymentForm.get('email').errors && (paymentForm.get('email').touched || paymentForm.get('email').dirty)}">
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <select id="webmenu" name="webmenu" formControlName="country"
+                  (change)="onCountrySelected($event.target.value)"
+                  [ngClass]="{'input-error': paymentForm.get('country').errors && (paymentForm.get('country').touched || paymentForm.get('country').dirty)}">
+                  <option selected>--Select country--</option>
+                  <option *ngFor="let c of myCountryArr">
+                    {{c.name}}
+                  </option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-4">
+                <select id="inputState" formControlName="state" (change)="onStateSelect($event.target.value)"
+                  [ngClass]="{'input-error': paymentForm.get('state').errors && (paymentForm.get('state').touched || paymentForm.get('state').dirty)}">
+                  <option selected>--Select state--</option>
+                  <option *ngFor="let state of myStatesArray">{{state.name}}</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-4">
+                <select id="inputState" (change)="onCitySelected($event.target.value)">
+                  <option selected>--Select city--</option>
+                  <option *ngFor="let city of myCityArray">{{city.name}}</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-4">
+                <input type="text" placeholder="Zip code" formControlName="zipeCode">
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="text" placeholder="Adresse 1" maxlength="40" formControlName="adrs1"
+                [ngClass]="{'input-error': paymentForm.get('adrs1').errors && (paymentForm.get('adrs1').touched || paymentForm.get('adrs1').dirty)}">
+            </div>
+            <div class="form-group">
+              <input type="text" placeholder="Adresse 2" maxlength="40" formControlName="adrs2">
+            </div>
+            <div class="row">
+              <div class="col">
+                <input type="text" placeholder="Phone" formControlName="phone" maxlength="14" value="{{prefixPhone}}"
+                  [ngClass]="{'input-error': paymentForm.get('phone').errors && (paymentForm.get('phone').touched || paymentForm.get('phone').dirty)}">
+              </div>
+            </div>
+
+          </div>
+          <h3><i class="fas fa-credit-card"></i> Card informations</h3>
+
+          <div class="card-information containerr col">
+            <div class="card-container " id="card"></div>
+            <div class="row">
+              <div class="col mb-2">
+                <input type="text" name="cardNumber" card-number placeholder="Card number" formControlName="cardNumber"
+                  [ngClass]="{'input-error': paymentForm.get('cardNumber').errors && (paymentForm.get('cardNumber').touched || paymentForm.get('cardNumber').dirty)}" />
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col">
+                <input type="text" name="first-name" card-name placeholder="First name" formControlName="first_name"
+                  [ngClass]="{'input-error': paymentForm.get('first_name').errors && (paymentForm.get('first_name').touched || paymentForm.get('first_name').dirty)}" />
+              </div>
+              <div class="col">
+                <input type="text" name="last-name" card-name placeholder="Last name" formControlName="last_name"
+                  [ngClass]="{'input-error': paymentForm.get('last_name').errors && (paymentForm.get('last_name').touched || paymentForm.get('last_name').dirty)}" />
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col">
+                <input type="text" name="expiry" card-expiry placeholder="Expiry" formControlName="expiry"
+                  [ngClass]="{'input-error': paymentForm.get('expiry').errors && (paymentForm.get('expiry').touched || paymentForm.get('expiry').dirty)}" />
+              </div>
+              <div class="col">
+                <input type="text" name="cvc" card-cvc placeholder="CVC" formControlName="cvc"
+                  [ngClass]="{'input-error': paymentForm.get('cvc').errors && (paymentForm.get('cvc').touched || paymentForm.get('cvc').dirty)}" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+
+                <button class="btn btn-primary btn-lg btn-block mt-3" [disabled]="!paymentForm.valid "
+                  [ngClass]="{'cursor-block': !paymentForm.valid}">
+                  <div class="spinner-border text-left spinner-border-sm mr-2" role="status" *ngIf="isLoading">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                  Pay {{totalPrice | currency : 'DH'}}
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

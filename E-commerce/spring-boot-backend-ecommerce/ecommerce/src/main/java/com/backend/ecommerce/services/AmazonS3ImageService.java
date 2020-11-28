@@ -28,8 +28,9 @@ import com.backend.ecommerce.utils.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import lombok.extern.log4j.Log4j2;
 
-//@Log4j2
+@Log4j2
 @Service
+
 public class AmazonS3ImageService {
 
 	// AmazonS3 Client, in this object you have all AWS API calls about S3.
@@ -59,7 +60,7 @@ public class AmazonS3ImageService {
 	// container.
 	@PostConstruct
 	private void init() {
-
+		
 		// Init your AmazonS3 credentials using BasicAWSCredentials.
 		BasicAWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
 
@@ -68,6 +69,7 @@ public class AmazonS3ImageService {
 		// region SA_EAST_2, and the basic credentials.
 		this.amazonS3 = AmazonS3ClientBuilder.standard().withRegion(Regions.US_EAST_2)
 				.withCredentials(new AWSStaticCredentialsProvider(credentials)).build();
+		log.info("region name : "+this.amazonS3.getRegionName());
 	}
 
 	// Upload a List of Images to AWS S3.

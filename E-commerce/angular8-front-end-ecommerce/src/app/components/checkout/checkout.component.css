@@ -1,0 +1,146 @@
+
+/* @extend display-flex; */
+display-flex, .select-icon, .select-icon i, .form-radio input + label figure, .form-flex, .steps ul, .actions ul li a, .form-row {
+    display: flex;
+    display: -webkit-flex; }
+  
+
+  
+  /* poppins-300 - latin */
+  
+  a:focus, a:active {
+    text-decoration: none;
+    outline: none;
+    transition: all 300ms ease 0s;
+    -moz-transition: all 300ms ease 0s;
+    -webkit-transition: all 300ms ease 0s;
+    -o-transition: all 300ms ease 0s;
+    -ms-transition: all 300ms ease 0s; }
+  
+  
+  
+  input:focus, select:focus {
+    outline: none;
+    box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    -o-box-shadow: none !important;
+    -ms-box-shadow: none !important; }
+  
+ 
+  
+  
+ 
+  
+  h2 {
+    font-size: 24px;
+    color: #222;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0px;
+    padding-top: 30px; }
+  
+  h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #999999;
+     }
+  .cursor-block{
+    cursor: not-allowed;
+  }
+ 
+  #card{
+      margin: 2em auto;
+  }
+  .containerr {
+      padding: 10px;
+    width: 990px;
+    position: relative;
+    margin: 20px auto;
+    background: #fff;
+    box-shadow: 0px 3px 9.5px 0.5px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 3px 9.5px 0.5px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 0px 3px 9.5px 0.5px rgba(0, 0, 0, 0.15);
+    -o-box-shadow: 0px 3px 9.5px 0.5px rgba(0, 0, 0, 0.15);
+    -ms-box-shadow: 0px 3px 9.5px 0.5px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+    -ms-border-radius: 10px; }
+  
+  
+  
+  input, select {
+    box-sizing: border-box;
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    padding: 15px 25px;
+    border: 1px solid #ebebeb;
+    font-family: 'Poppins';
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px; }
+    input:focus, select:focus {
+      border: 1px solid #1ed760; }
+    input::-webkit-input-placeholder, select::-webkit-input-placeholder {
+      color: #999; }
+    input::-moz-placeholder, select::-moz-placeholder {
+      color: #999; }
+    input:-ms-input-placeholder, select:-ms-input-placeholder {
+      color: #999; }
+    input:-moz-placeholder, select:-moz-placeholder {
+      color: #999; }
+  
+  select > option {
+    color: #999999; }
+  
+  select {
+    position: relative;
+    background: 0 0;
+    z-index: 10;
+    cursor: pointer;
+    color: #999; }
+  
+  
+  input, label, select {
+    width: 100%;
+    display: block; }
+  
+  .input-error {
+    border: 1px solid #f63726;
+    margin-bottom: 20px; }
+  
+  label.error {
+    font-size: 12px;
+    color: #f63726;
+    position: absolute;
+    bottom: 17px;
+    left: 0; }
+  
+  .label-radio {
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 70px; }
+  
+  @media screen and (max-width: 992px) {
+    .containerr {
+      width: calc(100% - 40px);
+      max-width: 100%; }
+   
+    }
+  @media screen and (max-width: 768px) {
+   }
+  
+    
+  @media screen and (max-width: 480px) {
+    
+    }
+  
+  /*# sourceMappingURL=style.css.map */
+  

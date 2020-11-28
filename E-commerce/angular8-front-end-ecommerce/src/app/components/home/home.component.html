@@ -32,7 +32,6 @@
                 <li class="fa fa-star"></li>
               </ul>
               <div class="price">{{product.price |  currency:'DH' : 'symbol': '0.2-2' :'fr'}}
-                <span>{{product.price |  currency:'DH' : 'symbol': '0.2-2' :'fr'}}</span>
               </div>
             </div>
           </div>
@@ -40,7 +39,7 @@
 
 
         <div class="col-md-12 alert alert-warning text-center" *ngIf="products?.length == 0">
-          Aucun produit
+         No product
         </div>
 
       </div>

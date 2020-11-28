@@ -10,10 +10,21 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
 
  
-  constructor() { }
+  constructor() {
+
+    window.addEventListener('offline', (e) => {
+      //Do task when no internet connection
+      console.log("no connection")
+      alert('Ooops no connection')
+      });
+
+      if(!navigator.onLine ){
+        alert('Ooops no connection 2')
+      }
+   }
 
   ngOnInit() {
-
+   
   }
 
   

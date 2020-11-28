@@ -3,6 +3,9 @@ a{
 }
 a:hover{
     text-decoration: none;
+    color: #fff;
+    background-color: #78e08f;
+
 }
 
 .bg-color{

@@ -30,16 +30,17 @@
               "./node_modules/quill/dist/quill.core.css",
               "./node_modules/quill/dist/quill.bubble.css",
               "./node_modules/quill/dist/quill.snow.css",
-              "./node_modules/ngx-toastr/toastr.css"
+              "./node_modules/ngx-toastr/toastr.css",
+              "node_modules/sweetalert2/src/sweetalert2"
             ],
             "scripts": [
               "./src/assets/js/vendor/jquery-1.12.3.min.js",
               "./node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "./node_modules/bootstrap/dist/js/bootstrap.js",
+              "node_modules/sweetalert2/dist/sweetalert2.js",
               "./node_modules/quill/dist/quill.min.js"
             ]
           },
-          "configurations": { 
+          "configurations": {
             "production": {
               "fileReplacements": [
                 {
@@ -131,6 +132,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "ecommerce"
 }

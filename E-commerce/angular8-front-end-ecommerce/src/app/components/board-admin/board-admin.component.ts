@@ -111,7 +111,7 @@ export class BoardAdminComponent implements OnInit {
       },
       err => {
         this.isLoading =false;
-        this.toaster.error(err.error.message)
+        this.toaster.error(err.error)
       }
     )
   }
